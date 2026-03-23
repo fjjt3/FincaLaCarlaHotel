@@ -1,0 +1,20 @@
+services:
+  # Backend Web Service
+  - type: web
+    name: finca-la-carla-backend
+    runtime: docker
+    rootDir: backend
+    plan: free
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: default
+
+  # Frontend Web Service (serving via Nginx)
+  - type: web
+    name: finca-la-carla-frontend
+    runtime: docker
+    rootDir: frontend
+    plan: free
+    envVars:
+      - key: BACKEND_URL
+        value: http://finca-la-carla-backend:8080

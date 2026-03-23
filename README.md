@@ -41,6 +41,20 @@ docker compose up --build
 - **Swagger**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 - **H2 Console**: [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
 
+## 🚀 Deploy to Render
+
+The project is ready to be deployed to **Render** using Blueprints:
+
+1.  Push your code to a **GitHub** or GitLab repository.
+2.  Log in to [Render](https://render.com).
+3.  Click **New > Blueprint**.
+4.  Connect your repository.
+5.  Render will automatically detect the `render.yaml` and create the services for you.
+6.  Once deployed, you will get two URLs: one for the backend and one for the frontend.
+
+> [!NOTE]
+> The database rotates on every restart since it uses H2 in-memory. For real persistence, you can add a PostgreSQL service in Render.
+
 
 ## Tech Stack
 

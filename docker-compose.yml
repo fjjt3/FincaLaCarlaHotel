@@ -1,5 +1,5 @@
 services:
-  backend:
+  finca-la-carla-backend:
     build: ./backend
     container_name: hotel-backend
     ports:
@@ -14,5 +14,5 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - backend
+      - finca-la-carla-backend
     restart: always
