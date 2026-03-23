@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import com.example.datedemo.domain.ReservationStatus;
 import java.util.Date;
 
 @Entity
@@ -27,4 +28,7 @@ public class ReservationEntity {
 
     @Temporal(TemporalType.DATE)
     private Date checkOutDate;
+
+    @Enumerated(EnumType.STRING)
+    private ReservationStatus status = ReservationStatus.ACTIVE;
 }

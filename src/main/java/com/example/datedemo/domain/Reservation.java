@@ -8,7 +8,8 @@ public record Reservation(
         String customerEmail,
         String roomType,
         Date checkInDate,
-        Date checkOutDate) {
+        Date checkOutDate,
+        ReservationStatus status) {
     public Reservation {
         if (checkInDate == null || checkOutDate == null) {
             throw new IllegalArgumentException("Check-in and check-out dates are required");

@@ -1,6 +1,7 @@
 package com.example.datedemo.interfaces;
 
 import com.example.datedemo.domain.Reservation;
+import com.example.datedemo.domain.ReservationStatus;
 import com.example.datedemo.domain.ReservationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,8 +27,30 @@ public class ReservationController {
                 request.customerEmail(),
                 request.roomType(),
                 request.checkInDate(),
-                request.checkOutDate());
+                request.checkOutDate(),
+                ReservationStatus.ACTIVE);
         return ResponseEntity.ok(reservationService.createReservation(reservation));
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Update an existing reservation")
+    public ResponseEntity<Reservation> updateReservation(@PathVariable Long id,
+            @RequestBody CreateReservationRequest request) {
+        Reservation updated = new Reservation(
+                id,
+                request.customerName(),
+                request.customerEmail(),
+                request.roomType(),
+                request.checkInDate(),
+                request.checkOutDate(),
+                ReservationStatus.ACTIVE);
+        return ResponseEntity.ok(reservationService.updateReservation(id, updated));
+    }
+
+    @PatchMapping("/{id}/cancel")
+    @Operation(summary = "Cancel a reservation")
+    public ResponseEntity<Reservation> cancelReservation(@PathVariable Long id) {
+        return ResponseEntity.ok(reservationService.cancelReservation(id));
     }
 
     @GetMapping

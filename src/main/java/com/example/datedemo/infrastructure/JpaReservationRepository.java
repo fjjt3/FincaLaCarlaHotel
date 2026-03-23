@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface JpaReservationRepository extends JpaRepository<ReservationEntity, Long> {
 
-    @Query("SELECT r FROM ReservationEntity r WHERE r.roomType = :roomType AND " +
-            "(r.checkInDate < :checkOut AND r.checkOutDate > :checkIn)")
-    List<ReservationEntity> findOverlapping(@Param("roomType") String roomType,
-            @Param("checkIn") Date checkIn,
-            @Param("checkOut") Date checkOut);
+        @Query("SELECT r FROM ReservationEntity r WHERE r.roomType = :roomType AND " +
+                        "r.status = 'ACTIVE' AND (r.checkInDate < :checkOut AND r.checkOutDate > :checkIn)")
+        List<ReservationEntity> findOverlapping(@Param("roomType") String roomType,
+                        @Param("checkIn") Date checkIn,
+                        @Param("checkOut") Date checkOut);
 }

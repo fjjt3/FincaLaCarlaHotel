@@ -48,7 +48,8 @@ public class ReservationRepositoryAdapter implements ReservationRepository {
                 domain.customerEmail(),
                 domain.roomType(),
                 domain.checkInDate(),
-                domain.checkOutDate());
+                domain.checkOutDate(),
+                domain.status());
     }
 
     private Reservation toDomain(ReservationEntity entity) {
@@ -58,6 +59,7 @@ public class ReservationRepositoryAdapter implements ReservationRepository {
                 entity.getCustomerEmail(),
                 entity.getRoomType(),
                 entity.getCheckInDate(),
-                entity.getCheckOutDate());
+                entity.getCheckOutDate(),
+                entity.getStatus());
     }
 }
