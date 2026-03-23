@@ -4,7 +4,7 @@ services:
     name: finca-la-carla-backend
     runtime: docker
     dockerContext: backend
-    dockerFilePath: Dockerfile
+    dockerFilePath: ../Dockerfile.backend
     plan: free
     envVars:
       - key: SPRING_PROFILES_ACTIVE
@@ -15,7 +15,7 @@ services:
     name: finca-la-carla-frontend
     runtime: docker
     dockerContext: frontend
-    dockerFilePath: Dockerfile
+    dockerFilePath: ../Dockerfile.frontend
     plan: free
     envVars:
       - key: BACKEND_URL
