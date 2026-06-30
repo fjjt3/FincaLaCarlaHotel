@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -14,9 +14,8 @@ export interface Reservation {
 
 @Injectable({ providedIn: 'root' })
 export class ReservationService {
-    private apiUrl = '/api/reservations';
-
-    constructor(private http: HttpClient) { }
+    private readonly http = inject(HttpClient);
+    private readonly apiUrl = '/api/reservations';
 
     createReservation(reservation: Reservation): Observable<Reservation> {
         return this.http.post<Reservation>(this.apiUrl, reservation);
