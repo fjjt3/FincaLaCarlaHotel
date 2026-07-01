@@ -7,6 +7,7 @@ interface Room {
   description: string;
   price: number;
   features: string[];
+  image: string;
   gradient: string;
   popular?: boolean;
 }
@@ -56,7 +57,7 @@ interface Room {
           @for (room of rooms; track room.id) {
             <article class="room-card" [class.room-card--popular]="room.popular"
                      [attr.aria-label]="'Room: ' + room.name">
-              <div class="room-card__image" [style.background]="room.gradient">
+              <div class="room-card__image" [style.backgroundImage]="'url(' + room.image + ')'" [style.background]="room.gradient">
                 @if (room.popular) {
                   <span class="room-card__badge">Most popular</span>
                 }
@@ -129,6 +130,7 @@ interface Room {
       inset: 0;
       background:
         linear-gradient(135deg, rgba(27,58,92,0.3), rgba(44,24,16,0.4)),
+        url('/hotel-hero.png') center/cover no-repeat,
         var(--color-mediterranean);
     }
     .hero-overlay {
@@ -211,6 +213,8 @@ interface Room {
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      background-size: cover;
+      background-position: center;
     }
     .room-card__ornament {
       font-size: 4rem;
@@ -322,6 +326,7 @@ export class HomeComponent {
       description: 'A cozy retreat with countryside views, rustic decor and all essentials.',
       price: 75,
       features: ['countryside view', 'private bathroom', 'free wifi'],
+      image: '/room-single.png',
       gradient: 'linear-gradient(135deg, #D4C5A9, #C4956A)'
     },
     {
@@ -330,6 +335,7 @@ export class HomeComponent {
       description: 'Spacious room with king-size bed, olive grove views and elegant details.',
       price: 120,
       features: ['king-size bed', 'olive grove view', 'private balcony', 'free wifi'],
+      image: '/room-double.png',
       gradient: 'linear-gradient(135deg, #7A8B5B, #5A6B3B)',
       popular: true
     },
@@ -339,6 +345,7 @@ export class HomeComponent {
       description: 'Our finest room with living area, private balcony and mountain panorama.',
       price: 200,
       features: ['living area', 'private balcony', 'mountain view', 'free wifi', 'minibar'],
+      image: '/room-suite.png',
       gradient: 'linear-gradient(135deg, #2C5380, #1B3A5C)'
     }
   ];
