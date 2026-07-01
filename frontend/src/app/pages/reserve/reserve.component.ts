@@ -107,11 +107,7 @@ import { Subscription } from 'rxjs';
                           [disabled]="loading() || !reservationForm.valid">
                     @if (loading()) {
                       <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                      @if (retrying()) {
-                        <span>Connecting to server...</span>
-                      } @else {
-                        <span>Processing...</span>
-                      }
+                      <span>Processing...</span>
                     } @else {
                       <span>Confirm Reservation</span>
                     }
@@ -253,7 +249,6 @@ export class ReserveComponent implements OnInit, OnDestroy {
   readonly checkOutDate = signal('');
 
   readonly loading = signal(false);
-  readonly retrying = signal(false);
   readonly successMessage = signal('');
   readonly errorMessage = signal('');
 
@@ -310,7 +305,6 @@ export class ReserveComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.loading.set(true);
-    this.retrying.set(false);
     this.successMessage.set('');
     this.errorMessage.set('');
 
@@ -322,23 +316,19 @@ export class ReserveComponent implements OnInit, OnDestroy {
       checkOutDate: this.checkOutDate()
     };
 
-    this.reservationService.createReservation(reservation, (attempt) => {
-      this.retrying.set(true);
-    }).subscribe({
+    this.reservationService.createReservation(reservation).subscribe({
       next: (res) => {
         this.successMessage.set(`Reservation #${res.id} confirmed for ${res.customerName}!`);
         this.loading.set(false);
-        this.retrying.set(false);
         this.resetForm();
       },
       error: (err) => {
         if (err.status === 429) {
-          this.errorMessage.set('Server is waking up. Please try again in a moment.');
+          this.errorMessage.set('Server is waking up. Please wait a moment and try again.');
         } else {
           this.errorMessage.set(err.error?.message || 'An error occurred. Please try again.');
         }
         this.loading.set(false);
-        this.retrying.set(false);
       }
     });
   }
