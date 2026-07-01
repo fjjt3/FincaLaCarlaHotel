@@ -55,14 +55,24 @@ import { Subscription } from 'rxjs';
                   </div>
 
                   <div class="mb-3">
-                    <label for="roomType" class="form-label fw-semibold">Room Type</label>
-                    <select class="form-select form-select-lg" id="roomType"
-                            [(ngModel)]="roomType" name="roomType" required>
-                      <option value="" disabled>Select a room</option>
-                      <option value="SINGLE">Single Room &mdash; &euro;75/night</option>
-                      <option value="DOUBLE">Double Room &mdash; &euro;120/night</option>
-                      <option value="SUITE">Suite &mdash; &euro;200/night</option>
-                    </select>
+                    <label class="form-label fw-semibold">Room Type</label>
+                    <div class="room-picker">
+                      @for (option of roomOptions; track option.id) {
+                        <button type="button"
+                                class="room-option"
+                                [class.room-option--active]="roomType() === option.id"
+                                (click)="roomType.set(option.id)"
+                                [attr.aria-pressed]="roomType() === option.id">
+                          <div class="room-option__image"
+                               [style.backgroundImage]="'url(' + option.image + ')'"></div>
+                          <div class="room-option__info">
+                            <span class="room-option__name">{{ option.name }}</span>
+                            <span class="room-option__price">&euro;{{ option.price }}/night</span>
+                          </div>
+                        </button>
+                      }
+                    </div>
+                    <input type="hidden" [(ngModel)]="roomType" name="roomType" required>
                   </div>
 
                   <div class="row">
@@ -182,6 +192,49 @@ import { Subscription } from 'rxjs';
       color: var(--color-dark-oak);
       text-decoration: underline;
     }
+    .room-picker {
+      display: flex;
+      gap: var(--space-md);
+    }
+    .room-option {
+      flex: 1;
+      border: 2px solid var(--color-stone);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      background: #fff;
+      padding: 0;
+      text-align: left;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .room-option:hover {
+      border-color: var(--color-warm-gray);
+    }
+    .room-option--active {
+      border-color: var(--color-mediterranean);
+      box-shadow: 0 0 0 3px rgba(44, 83, 128, 0.2);
+    }
+    .room-option__image {
+      height: 100px;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--color-stone);
+    }
+    .room-option__info {
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .room-option__name {
+      font-weight: 600;
+      font-size: var(--text-sm);
+      color: var(--color-dark-oak);
+    }
+    .room-option__price {
+      font-size: var(--text-xs);
+      color: var(--color-warm-gray);
+    }
   `]
 })
 export class ReserveComponent implements OnInit, OnDestroy {
@@ -206,6 +259,12 @@ export class ReserveComponent implements OnInit, OnDestroy {
     DOUBLE: 120,
     SUITE: 200
   };
+
+  readonly roomOptions = [
+    { id: 'SINGLE', name: 'Single Room', price: 75, image: '/room-single.png' },
+    { id: 'DOUBLE', name: 'Double Room', price: 120, image: '/room-double.png' },
+    { id: 'SUITE', name: 'Suite', price: 200, image: '/room-suite.png' }
+  ];
 
   readonly pricePerNight = computed(() => this.roomPrices[this.roomType()] ?? 0);
 
