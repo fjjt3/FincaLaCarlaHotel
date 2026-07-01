@@ -323,7 +323,11 @@ export class ReserveComponent implements OnInit, OnDestroy {
         this.resetForm();
       },
       error: (err) => {
-        this.errorMessage.set(err.error?.message || 'An error occurred. Please try again.');
+        if (err.status === 429) {
+          this.errorMessage.set('Server is waking up. Please wait a moment and try again.');
+        } else {
+          this.errorMessage.set(err.error?.message || 'An error occurred. Please try again.');
+        }
         this.loading.set(false);
       }
     });
