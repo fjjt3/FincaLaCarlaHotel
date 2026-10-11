@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-11T00:00:00.000Z",
+  "title": "Design System: Finca La Carla",
+  "extensions": {
+    "colorMeta": {
+      "sun": { "role": "primary", "displayName": "Sunlit Gold", "canonical": "#E8B84B", "tonalRamp": ["#3f2f0c", "#6b511a", "#977429", "#c49738", "#e8b84b", "#efc976", "#f5daa2", "#fbeccf"] },
+      "sun-dark": { "role": "primary", "displayName": "Deeper Gold", "canonical": "#D4A030", "tonalRamp": ["#3a2b0d", "#63491a", "#8b6728", "#b18537", "#d4a030", "#ddb35c", "#e6c688", "#f2e0bb"] },
+      "terracotta": { "role": "primary", "displayName": "Clay Terracotta", "canonical": "#C4956A", "tonalRamp": ["#3a2a1c", "#5f4630", "#855f42", "#a67b52", "#c4956a", "#d3ab88", "#e0c3a7", "#efdcc9"] },
+      "terracotta-dark": { "role": "primary", "displayName": "Baked Clay", "canonical": "#A67B52", "tonalRamp": ["#322518", "#523c28", "#725339", "#8b6443", "#a67b52", "#ba9070", "#cda68c", "#e0bda8"] },
+      "mediterranean": { "role": "secondary", "displayName": "Deep Mediterranean", "canonical": "#1B3A5C", "tonalRamp": ["#08131f", "#102538", "#152e49", "#1b3a5c", "#2c5380", "#4a729d", "#8aa6c1", "#dbe5ee"] },
+      "mediterranean-light": { "role": "secondary", "displayName": "Mediterranean Blue", "canonical": "#2C5380", "tonalRamp": ["#0d1a28", "#152c44", "#1e3d61", "#2c5380", "#3f6b9c", "#6a8fb7", "#9db4cd", "#d6e0ea"] },
+      "olive": { "role": "tertiary", "displayName": "Olive Grove", "canonical": "#7A8B5B", "tonalRamp": ["#25301a", "#3b4a2b", "#55663d", "#6a7a4f", "#7a8b5b", "#93a378", "#aebc98", "#d3dbc6"] },
+      "olive-light": { "role": "tertiary", "displayName": "Pale Olive", "canonical": "#9AAB7B", "tonalRamp": ["#2f3a22", "#46552f", "#60713f", "#7d8f58", "#9aab7b", "#aebc95", "#c2cdae", "#e5eadb"] },
+      "dark-oak": { "role": "neutral", "displayName": "Dark Oak", "canonical": "#2C1810", "tonalRamp": ["#0d0705", "#1a0e08", "#22130c", "#2c1810", "#4a2c1e", "#6b4430", "#8f6449", "#d9bfa8"] },
+      "whitewash": { "role": "neutral", "displayName": "Warm Whitewash", "canonical": "#FAF6F1", "tonalRamp": ["#b3ada4", "#c8c3ba", "#ded9d1", "#ece7e0", "#faf6f1", "#fbf8f4", "#fcfaf7", "#fefefd"] },
+      "stone": { "role": "neutral", "displayName": "Warm Stone", "canonical": "#E8E0D8", "tonalRamp": ["#a29c94", "#bab4ab", "#d1cbc2", "#dcd5cc", "#e8e0d8", "#ece6de", "#f1ece5", "#faf7f3"] },
+      "warm-gray": { "role": "neutral", "displayName": "Warm Taupe", "canonical": "#8B7E74", "tonalRamp": ["#2f2a26", "#4e4740", "#6d6459", "#7d7166", "#8b7e74", "#a3998f", "#bab2a9", "#e0dcd6"] },
+      "cream": { "role": "neutral", "displayName": "Cream Plaster", "canonical": "#F0EAE2", "tonalRamp": ["#a89e92", "#beb5a9", "#d4ccc0", "#e2dbd1", "#f0eae2", "#f3eee7", "#f6f2ec", "#faf9f6"] },
+      "white": { "role": "neutral", "displayName": "Pure White", "canonical": "#FFFFFF", "tonalRamp": ["#b0b0b0", "#c7c7c7", "#dedede", "#ededed", "#ffffff", "#ffffff", "#ffffff", "#ffffff"] }
+    },
+    "literals": [],
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero title only, over the hero image." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles ('Our Rooms', 'Find Us')." },
+      "title": { "displayName": "Title", "purpose": "Room-card names; wordmarks and monetary amounts are Playfair too." },
+      "body": { "displayName": "Body", "purpose": "Descriptions and reading copy." },
+      "label": { "displayName": "Label", "purpose": "Uppercase eyebrows, hero location, amenity chips." }
+    },
+    "shadows": [
+      { "name": "resting-hairline", "value": "0 1px 3px rgba(44, 24, 16, 0.08)", "purpose": "Default card elevation at rest." },
+      { "name": "raised", "value": "0 4px 12px rgba(44, 24, 16, 0.1)", "purpose": "Emphasized 'popular' room card." },
+      { "name": "hover-lift", "value": "0 8px 30px rgba(44, 24, 16, 0.12)", "purpose": "Room-card hover, paired with translateY(-4px)." },
+      { "name": "focus-glow-sun", "value": "0 0 0 0.2rem rgba(232, 184, 75, 0.25)", "purpose": "Gold-tinted ring on focused form controls." },
+      { "name": "focus-ring-mediterranean", "value": "0 0 0 3px rgba(44, 83, 128, 0.2)", "purpose": "Active room-option selection ring." }
+    ],
+    "motion": [
+      { "name": "duration-fast", "value": "0.2s", "purpose": "Color and focus transitions on controls." },
+      { "name": "duration-slow", "value": "0.3s", "purpose": "Card shadow and transform transitions." },
+      { "name": "lift-button", "value": "translateY(-2px)", "purpose": "Button hover lift." },
+      { "name": "lift-card", "value": "translateY(-4px)", "purpose": "Room-card hover lift." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "576px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "992px" },
+      { "name": "xl", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Gold-filled action button for the single committing action on a view (Book, Confirm).",
+      "html": "<button class=\"ds-btn-primary\">Book Your Stay</button>",
+      "css": ".ds-btn-primary { font-family: var(--font-body, 'Inter', sans-serif); background: var(--color-sun, #E8B84B); color: var(--color-dark-oak, #2C1810); font-weight: 600; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 1rem 3rem; border: none; border-radius: var(--radius-sm, 4px); cursor: pointer; transition: background 0.2s, transform 0.2s; } .ds-btn-primary:hover { background: var(--color-sun-dark, #D4A030); transform: translateY(-2px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-sun, #E8B84B); outline-offset: 2px; } .ds-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Terracotta-outlined secondary action; fills on hover. Used for the room-card 'Book' link.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">Book &rarr;</a>",
+      "css": ".ds-btn-outline { display: inline-block; font-family: var(--font-body, 'Inter', sans-serif); background: transparent; color: var(--color-terracotta-dark, #A67B52); font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.5rem 1rem; border: 1px solid var(--color-terracotta, #C4956A); border-radius: var(--radius-sm, 4px); text-decoration: none; cursor: pointer; transition: background 0.2s, color 0.2s; } .ds-btn-outline:hover { background: var(--color-terracotta, #C4956A); color: var(--color-white, #FFFFFF); } .ds-btn-outline:focus-visible { outline: 2px solid var(--color-sun, #E8B84B); outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Form text field with a gold focus border and glow; white fill on the warm canvas.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field__label\">Full Name</span><input class=\"ds-input\" type=\"text\" placeholder=\"e.g. Carlos Garc\u00eda\"></label>",
+      "css": ".ds-field { display: block; font-family: var(--font-body, 'Inter', sans-serif); } .ds-field__label { display: block; font-weight: 600; font-size: 1rem; color: var(--color-dark-oak, #2C1810); margin-bottom: 0.5rem; } .ds-input { box-sizing: border-box; width: 100%; font-family: inherit; font-size: 1.25rem; color: var(--color-dark-oak, #2C1810); background: var(--color-white, #FFFFFF); border: 1px solid var(--color-stone, #E8E0D8); border-radius: var(--radius-md, 8px); padding: 0.5rem 1rem; transition: border-color 0.2s, box-shadow 0.2s; } .ds-input::placeholder { color: var(--color-warm-gray, #8B7E74); } .ds-input:focus { outline: none; border-color: var(--color-sun, #E8B84B); box-shadow: 0 0 0 0.2rem rgba(232, 184, 75, 0.25); }"
+    },
+    {
+      "name": "Amenity Chip",
+      "kind": "chip",
+      "refersTo": "chip-amenity",
+      "description": "Small olive pill marking a room feature; non-interactive label.",
+      "html": "<span class=\"ds-chip\">private balcony</span>",
+      "css": ".ds-chip { display: inline-block; font-family: var(--font-body, 'Inter', sans-serif); font-size: 0.75rem; font-weight: 500; color: var(--color-olive, #7A8B5B); background: rgba(122, 139, 91, 0.1); padding: 0.25rem 0.75rem; border-radius: 100px; }"
+    },
+    {
+      "name": "Room Card",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "White 16px card with an image header band, title, description, amenity chips, and a price/CTA footer. Lifts on hover.",
+      "html": "<article class=\"ds-room-card\"><div class=\"ds-room-card__media\"><span class=\"ds-room-card__diamond\">&#x25C7;</span><span class=\"ds-room-card__badge\">Most popular</span></div><div class=\"ds-room-card__body\"><h3 class=\"ds-room-card__title\">Double Room</h3><p class=\"ds-room-card__desc\">Spacious room with king-size bed and olive grove views.</p><ul class=\"ds-room-card__features\"><li class=\"ds-chip\">king-size bed</li><li class=\"ds-chip\">olive grove view</li></ul><div class=\"ds-room-card__footer\"><span class=\"ds-room-card__price\">&euro;120<span class=\"ds-room-card__unit\"> / night</span></span><a class=\"ds-btn-outline\" href=\"#\">Book &rarr;</a></div></div></article>",
+      "css": ".ds-room-card { display: flex; flex-direction: column; overflow: hidden; background: var(--color-white, #FFFFFF); border-radius: var(--radius-lg, 16px); box-shadow: 0 1px 3px rgba(44, 24, 16, 0.08); transition: box-shadow 0.3s, transform 0.3s; } .ds-room-card:hover { box-shadow: 0 8px 30px rgba(44, 24, 16, 0.12); transform: translateY(-4px); } .ds-room-card__media { position: relative; height: 220px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #7A8B5B, #5A6B3B); } .ds-room-card__diamond { font-size: 4rem; color: rgba(255, 255, 255, 0.3); } .ds-room-card__badge { position: absolute; top: 1rem; right: 1rem; font-family: var(--font-body, 'Inter', sans-serif); background: var(--color-sun, #E8B84B); color: var(--color-dark-oak, #2C1810); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.3rem 0.8rem; border-radius: var(--radius-sm, 4px); } .ds-room-card__body { display: flex; flex-direction: column; flex: 1; padding: 2rem; } .ds-room-card__title { font-family: var(--font-display, Georgia, serif); font-size: 1.25rem; font-weight: 600; line-height: 1.2; color: var(--color-dark-oak, #2C1810); margin: 0 0 0.5rem; } .ds-room-card__desc { font-family: var(--font-body, 'Inter', sans-serif); font-size: 0.875rem; line-height: 1.6; color: var(--color-warm-gray, #8B7E74); margin: 0 0 1rem; } .ds-room-card__features { display: flex; flex-wrap: wrap; gap: 0.25rem; margin: 0 0 1.5rem; padding: 0; list-style: none; } .ds-room-card__features .ds-chip { font-family: var(--font-body, 'Inter', sans-serif); font-size: 0.75rem; font-weight: 500; color: var(--color-olive, #7A8B5B); background: rgba(122, 139, 91, 0.1); padding: 0.25rem 0.75rem; border-radius: 100px; } .ds-room-card__footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--color-stone, #E8E0D8); } .ds-room-card__price { font-family: var(--font-display, Georgia, serif); font-size: 1.5rem; font-weight: 700; color: var(--color-mediterranean, #1B3A5C); } .ds-room-card__unit { font-family: var(--font-body, 'Inter', sans-serif); font-size: 0.875rem; font-weight: 400; color: var(--color-warm-gray, #8B7E74); }"
+    },
+    {
+      "name": "Room Option Picker",
+      "kind": "custom",
+      "refersTo": "card-surface",
+      "description": "Signature selectable room tile used in the reservation form; image strip, name and price, active border in Deep Mediterranean.",
+      "html": "<button class=\"ds-room-option ds-room-option--active\" aria-pressed=\"true\"><span class=\"ds-room-option__image\"></span><span class=\"ds-room-option__info\"><span class=\"ds-room-option__name\">Double Room</span><span class=\"ds-room-option__price\">&euro;120/night</span></span></button>",
+      "css": ".ds-room-option { flex: 1; display: block; text-align: left; padding: 0; overflow: hidden; background: var(--color-white, #FFFFFF); border: 2px solid var(--color-stone, #E8E0D8); border-radius: var(--radius-md, 8px); cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; } .ds-room-option:hover { border-color: var(--color-warm-gray, #8B7E74); } .ds-room-option--active { border-color: var(--color-mediterranean, #1B3A5C); box-shadow: 0 0 0 3px rgba(44, 83, 128, 0.2); } .ds-room-option__image { display: block; height: 100px; background: linear-gradient(135deg, #D4C5A9, #C4956A); background-size: cover; background-position: center; } .ds-room-option__info { display: flex; flex-direction: column; gap: 2px; padding: 0.5rem 1rem; } .ds-room-option__name { font-family: var(--font-body, 'Inter', sans-serif); font-weight: 600; font-size: 0.875rem; color: var(--color-dark-oak, #2C1810); } .ds-room-option__price { font-family: var(--font-body, 'Inter', sans-serif); font-size: 0.75rem; color: var(--color-warm-gray, #8B7E74); }"
+    },
+    {
+      "name": "Price Summary",
+      "kind": "custom",
+      "refersTo": "card-surface",
+      "description": "Signature cream panel shown once dates resolve: muted per-night row over a stone rule, bold Total with a Playfair amount in Deep Mediterranean.",
+      "html": "<div class=\"ds-price-summary\"><div class=\"ds-price-summary__row\"><span>Double Room &times; 3 nights</span><span>&euro;120 / night</span></div><div class=\"ds-price-summary__total\"><span>Total</span><span class=\"ds-price-summary__amount\">&euro;360</span></div></div>",
+      "css": ".ds-price-summary { font-family: var(--font-body, 'Inter', sans-serif); background: var(--color-cream, #F0EAE2); border-radius: var(--radius-md, 8px); padding: 1rem 1.5rem; margin-top: 1rem; } .ds-price-summary__row { display: flex; justify-content: space-between; font-size: 0.875rem; color: var(--color-warm-gray, #8B7E74); margin-bottom: 0.5rem; } .ds-price-summary__total { display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; font-size: 1.125rem; color: var(--color-dark-oak, #2C1810); padding-top: 0.5rem; border-top: 1px solid var(--color-stone, #E8E0D8); } .ds-price-summary__amount { font-family: var(--font-display, Georgia, serif); font-size: 1.25rem; font-weight: 700; color: var(--color-mediterranean, #1B3A5C); }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "button-primary",
+      "description": "Fixed translucent Deep Mediterranean bar with blurred backdrop; serif brand, uppercase tracked links, gold CTA.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav__brand\">Finca La Carla</span><span class=\"ds-nav__links\"><a class=\"ds-nav__link\" href=\"#\">Home</a><a class=\"ds-nav__cta\" href=\"#\">Book Your Stay</a></span></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.5rem; background: rgba(27, 58, 92, 0.95); border-bottom: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); } .ds-nav__brand { font-family: var(--font-display, Georgia, serif); font-size: 1.4rem; letter-spacing: 0.02em; color: #FAF6F1; } .ds-nav__links { display: flex; align-items: center; gap: 0.5rem; } .ds-nav__link { font-family: var(--font-body, 'Inter', sans-serif); font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.8); text-decoration: none; padding: 0.5rem 1rem; transition: color 0.2s; } .ds-nav__link:hover { color: var(--color-sun, #E8B84B); } .ds-nav__cta { font-family: var(--font-body, 'Inter', sans-serif); font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.06em; background: var(--color-sun, #E8B84B); color: var(--color-dark-oak, #2C1810); padding: 0.5rem 1.5rem; border-radius: var(--radius-sm, 4px); text-decoration: none; transition: background 0.2s, transform 0.2s; } .ds-nav__cta:hover { background: var(--color-sun-dark, #D4A030); transform: translateY(-1px); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Shaded Patio",
+    "overview": "An Andalusian house keeps a shaded patio at its heart: whitewashed walls that hold the midday heat at bay, cool stone underfoot, olive and clay just beyond the arcade, and a single shaft of light crossing the tiles as the day turns. Finca La Carla's visual system is that patio \u2014 a warm neutral field, a small earth-and-sea palette, and one bright shaft of sunlight saved for the moment a guest commits.\n\nThe mood is warm, calm, and understated. This is a small rural hotel, not a transaction engine, so the interface stays quiet: generous whitespace, gentle depth, no spectacle. Color, shadow, and motion are restrained; the craft shows in proportion and detail rather than loudness. Type does the emotional work \u2014 a high-contrast serif for display against a clean grotesque for reading.\n\nDepth stays soft, like shade rather than structure: surfaces sit near-flat at rest and lift only slightly on hover, and every shadow is tinted with the dark oak brown instead of neutral black, so nothing ever reads as cold glass.",
+    "keyCharacteristics": [
+      "Warm off-white canvas (Warm Whitewash) with cream-plaster bands for rhythm, never grey.",
+      "Earth-and-sea palette \u2014 Clay Terracotta, Olive Grove, Deep Mediterranean \u2014 with Sunlit Gold as the single bright action voice.",
+      "Serif display (Playfair Display) over grotesque body (Inter); uppercase tracked labels and bilingual eyebrows.",
+      "Restrained geometry: 4px on small controls, 8px on panels, 16px on cards, pill chips.",
+      "Gentle, warm-tinted shadows; flat at rest, a small lift on hover.",
+      "A recurring rotated diamond motif (the \"andalusian divider\") as the one ornament."
+    ],
+    "rules": [
+      { "name": "The One Bright Voice Rule", "body": "Sunlit Gold is the only saturated color and covers no more than ~10% of any screen. Its scarcity is what makes the booking action read instantly.", "section": "colors" },
+      { "name": "The Warm-Neutral Rule", "body": "There is no neutral grey in the palette. Whites lean warm (whitewash, cream plaster), darks lean oak brown, and even inactive borders use warm stone. A cold #888 is always the wrong answer.", "section": "colors" },
+      { "name": "The Bilingual Eyebrow Rule", "body": "Section eyebrows are uppercase, tracked, and Spanish against English body copy \u2014 a small, consistent signature of place. Keep them warm taupe, never gold.", "section": "typography" },
+      { "name": "The Serif-Voice Rule", "body": "Playfair is reserved for titles, brand wordmarks, and monetary amounts. Never set body copy, labels, or form text in the display serif.", "section": "typography" },
+      { "name": "The Warm Shadow Rule", "body": "All shadows are tinted with Dark Oak; a neutral-black shadow is never used.", "section": "elevation" },
+      { "name": "The Small-Lift Rule", "body": "Hover elevation is capped at a 4px translate (2px on buttons). Big jumps and dramatic rises break the calm.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the canvas warm (Warm Whitewash / Cream Plaster) and darks oak-tinted; every neutral should carry a little heat.",
+      "Do reserve Sunlit Gold for actions and focus \u2014 one bright voice per view (The One Bright Voice Rule).",
+      "Do tint all shadows with rgba(44, 24, 16, \u2026) and keep hover lifts to \u22644px.",
+      "Do pair a Spanish uppercase eyebrow with English body copy on every section (The Bilingual Eyebrow Rule).",
+      "Do set titles, wordmarks, and monetary amounts in Playfair Display, and everything else in Inter.",
+      "Do keep small controls at 4px, panels at 8px, cards at 16px, and chips as full pills."
+    ],
+    "donts": [
+      "Don't introduce cold greys, pure #000/#888, or neutral-black shadows.",
+      "Don't flood a screen with terracotta, olive, or gold; they are accents over a neutral base.",
+      "Don't set body copy, labels, or form fields in the display serif.",
+      "Don't add decorative geometry beyond the diamond divider motif.",
+      "Don't chase a generic OTA/booking-widget or stock-Bootstrap look; craft stays boutique and calm."
+    ]
+  }
+}

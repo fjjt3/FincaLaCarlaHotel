@@ -122,7 +122,7 @@ interface Room {
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: #fff;
+      color: var(--color-white);
       overflow: hidden;
     }
     .hero-bg {
@@ -149,7 +149,7 @@ interface Room {
       font-weight: 700;
       line-height: 1.1;
       margin-bottom: 0.75rem;
-      color: #fff;
+      color: var(--color-white);
       letter-spacing: 0.02em;
     }
     .hero-subtitle {
@@ -178,7 +178,7 @@ interface Room {
       transition: background 0.2s, transform 0.2s;
     }
     .hero-cta:hover {
-      background: #d4a030;
+      background: var(--color-sun-dark);
       transform: translateY(-2px);
       color: var(--color-dark-oak);
     }
@@ -191,7 +191,7 @@ interface Room {
     }
 
     .room-card {
-      background: #fff;
+      background: var(--color-white);
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-sm);
@@ -297,7 +297,7 @@ interface Room {
     }
     .room-card__cta:hover {
       background: var(--color-terracotta);
-      color: #fff;
+      color: var(--color-white);
     }
 
     .site-footer {
@@ -308,7 +308,7 @@ interface Room {
     .site-footer__brand {
       font-family: var(--font-display);
       font-size: var(--text-lg);
-      color: #fff;
+      color: var(--color-white);
       display: block;
       margin-bottom: var(--space-sm);
     }

@@ -140,7 +140,7 @@ import { Subscription } from 'rxjs';
       box-shadow: 0 0 0 0.2rem rgba(232, 184, 75, 0.25);
     }
     .price-summary {
-      background: #F0EAE2;
+      background: var(--color-cream);
       border-radius: var(--radius-md);
       padding: var(--space-md) var(--space-lg);
       margin-top: var(--space-md);
@@ -176,7 +176,7 @@ import { Subscription } from 'rxjs';
       transition: background 0.2s, transform 0.2s;
     }
     .btn-submit:hover:not(:disabled) {
-      background: #d4a030;
+      background: var(--color-sun-dark);
       transform: translateY(-1px);
     }
     .btn-submit:disabled {
@@ -202,7 +202,7 @@ import { Subscription } from 'rxjs';
       border-radius: var(--radius-md);
       overflow: hidden;
       cursor: pointer;
-      background: #fff;
+      background: var(--color-white);
       padding: 0;
       text-align: left;
       transition: border-color 0.2s, box-shadow 0.2s;

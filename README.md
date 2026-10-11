@@ -10,9 +10,10 @@ Full-stack application for managing reservations at a small hotel in **Antequera
 ## Quick Start
 
 ### 1. Run the Backend
+Requires Java 21 and Maven installed and available on your `PATH` (this repository does not include the Maven Wrapper).
 ```bash
 cd backend
-./mvnw spring-boot:run
+mvn spring-boot:run
 ```
 The API will be available at [http://localhost:8080](http://localhost:8080).
 - **Swagger UI**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)

@@ -78,7 +78,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
       border: none;
     }
     .nav-cta:hover {
-      background: #d4a030;
+      background: var(--color-sun-dark);
       transform: translateY(-1px);
       color: var(--color-dark-oak) !important;
     }

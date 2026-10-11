@@ -9,9 +9,12 @@
   --color-olive: #7A8B5B;
   --color-olive-light: #9AAB7B;
   --color-sun: #E8B84B;
+  --color-sun-dark: #D4A030;
   --color-dark-oak: #2C1810;
   --color-stone: #E8E0D8;
   --color-warm-gray: #8B7E74;
+  --color-cream: #F0EAE2;
+  --color-white: #FFFFFF;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -72,7 +75,7 @@ body {
   top: -100%;
   left: var(--space-md);
   background: var(--color-dark-oak);
-  color: #fff;
+  color: var(--color-white);
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-sm);
   z-index: 10000;
@@ -127,7 +130,7 @@ img {
   padding: var(--space-4xl) 0;
 }
 .section--cream {
-  background: #F0EAE2;
+  background: var(--color-cream);
 }
 .section-eyebrow {
   font-family: var(--font-body);
