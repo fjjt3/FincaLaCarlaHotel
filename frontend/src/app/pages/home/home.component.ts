@@ -57,13 +57,13 @@ interface Room {
           @for (room of rooms; track room.id) {
             <article class="room-card" [class.room-card--popular]="room.popular"
                      [attr.aria-label]="'Room: ' + room.name">
-              <div class="room-card__image" [style.backgroundImage]="'url(' + room.image + ')'" [style.background]="room.gradient">
+              <div class="room-card__image" [style.background]="room.gradient">
+                <img class="room-card__photo" [src]="room.image"
+                     [alt]="'Illustrative interior of the ' + room.name"
+                     loading="lazy" decoding="async">
                 @if (room.popular) {
                   <span class="room-card__badge">Most popular</span>
                 }
-                <span class="room-card__ornament" aria-hidden="true">
-                  &#x25C7;
-                </span>
               </div>
               <div class="room-card__body">
                 <h3 class="room-card__title">{{ room.name }}</h3>
@@ -209,16 +209,15 @@ interface Room {
     .room-card__image {
       position: relative;
       height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
       background-size: cover;
       background-position: center;
     }
-    .room-card__ornament {
-      font-size: 4rem;
-      color: rgba(255,255,255,0.3);
+    .room-card__photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .room-card__badge {
       position: absolute;
