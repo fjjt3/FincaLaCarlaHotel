@@ -177,7 +177,6 @@ interface Room {
       text-transform: uppercase;
       letter-spacing: 0.08em;
       border: none;
-      transition: background 0.2s, transform 0.2s;
     }
     .hero-cta:hover {
       background: var(--color-sun-dark);
@@ -302,7 +301,6 @@ interface Room {
       padding: 0.5rem 1rem;
       border: 1px solid var(--color-terracotta);
       border-radius: var(--radius-sm);
-      transition: background 0.2s, color 0.2s;
     }
     .room-card__cta:hover {
       background: var(--color-terracotta);

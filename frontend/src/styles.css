@@ -165,6 +165,77 @@ img {
   color: var(--color-dark-oak);
 }
 
+.btn,
+.btn-close,
+.room-option,
+.back-link,
+.navbar-brand,
+.nav-link,
+.navbar-toggler,
+.contact-link {
+  transition-duration: 180ms;
+  transition-timing-function: ease-out;
+}
+
+.hero-cta {
+  transition: background 200ms ease-out, transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.room-card__cta {
+  transition: background 200ms ease-out, color 200ms ease-out, transform 200ms ease-out,
+    box-shadow 200ms ease-out;
+}
+
+.hero-cta:hover,
+.room-card__cta:hover {
+  box-shadow: 0 4px 12px rgba(44, 24, 16, 0.14);
+}
+
+.btn:active:not(:disabled),
+.room-card__cta:active,
+.room-option:active,
+.navbar-toggler:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.btn:focus-visible,
+.room-card__cta:focus-visible,
+.room-option:focus-visible,
+.navbar-toggler:focus-visible,
+.btn-close:focus-visible {
+  outline-color: var(--color-terracotta);
+}
+
+.reservation-body > .alert {
+  animation: notice-arrive 220ms ease-out both;
+}
+
+.price-summary {
+  animation: detail-arrive 200ms ease-out both;
+}
+
+@keyframes notice-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(-0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes detail-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

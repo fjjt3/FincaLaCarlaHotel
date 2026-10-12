@@ -250,11 +250,12 @@ import { Subscription } from 'rxjs';
       font-size: var(--text-base);
       font-weight: 600;
       letter-spacing: 0.01em;
-      transition: background 0.2s, transform 0.2s, opacity 0.2s;
+      transition: background 0.2s, transform 0.2s, opacity 0.2s, box-shadow 0.2s;
     }
     .btn-submit:hover:not(:disabled) {
       background: var(--color-sun-dark);
       transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(44, 24, 16, 0.14);
     }
     .btn-submit:disabled {
       opacity: 0.72;

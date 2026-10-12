@@ -72,6 +72,15 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
     .navbar-toggler:focus {
       box-shadow: 0 0 0 0.2rem rgba(232,184,75,0.35);
     }
+    .navbar-toggler-icon {
+      transition: transform 180ms ease-out;
+    }
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+      transform: rotate(90deg);
+    }
+    .navbar-collapse.show {
+      animation: navigation-arrive 180ms ease-out both;
+    }
     .nav-cta {
       background: var(--color-sun);
       color: var(--color-dark-oak) !important;
@@ -101,6 +110,16 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
         display: block;
         margin-top: var(--space-xs);
         text-align: center;
+      }
+    }
+    @keyframes navigation-arrive {
+      from {
+        opacity: 0;
+        transform: translateY(-0.35rem);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   `]
