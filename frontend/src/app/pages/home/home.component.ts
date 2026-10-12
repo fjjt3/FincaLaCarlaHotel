@@ -37,7 +37,7 @@ interface Room {
         <div class="andalusian-divider" aria-hidden="true">
           <span class="diamond"></span>
         </div>
-        <p class="section-text mx-auto" style="max-width:680px">
+        <p class="section-text welcome-copy mx-auto">
           Nestled among olive groves and rolling hills, Finca La Carla offers
           an authentic Andalusian experience &mdash; mountain views, a refreshing pool,
           and the warm hospitality of southern Spain.
@@ -117,7 +117,8 @@ interface Room {
   styles: [`
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: min(100vh, 58rem);
+      min-height: min(100svh, 58rem);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -141,16 +142,17 @@ interface Room {
     .hero-content {
       position: relative;
       z-index: 2;
-      padding: 2rem;
+      width: min(100%, 46rem);
+      padding: 2rem 1.5rem;
     }
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-size: clamp(2.75rem, 8vw, 5.25rem);
       font-weight: 700;
       line-height: 1.1;
       margin-bottom: 0.75rem;
       color: var(--color-white);
-      letter-spacing: 0.02em;
+      letter-spacing: -0.035em;
     }
     .hero-subtitle {
       font-size: clamp(1rem, 2.5vw, 1.375rem);
@@ -182,6 +184,9 @@ interface Room {
       transform: translateY(-2px);
       color: var(--color-dark-oak);
     }
+    .welcome-copy {
+      max-width: 42.5rem;
+    }
 
     .rooms-grid {
       display: grid;
@@ -192,10 +197,10 @@ interface Room {
 
     .room-card {
       background: var(--color-white);
-      border-radius: var(--radius-lg);
+      border-radius: 12px;
       overflow: hidden;
       box-shadow: var(--shadow-sm);
-      transition: box-shadow 0.3s, transform 0.3s;
+      transition: box-shadow 0.25s, transform 0.25s;
       display: flex;
       flex-direction: column;
     }
@@ -208,7 +213,7 @@ interface Room {
     }
     .room-card__image {
       position: relative;
-      height: 220px;
+      height: clamp(13rem, 22vw, 17rem);
       overflow: hidden;
       background-size: cover;
       background-position: center;
@@ -218,6 +223,10 @@ interface Room {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+    .room-card:hover .room-card__photo {
+      transform: scale(1.035);
     }
     .room-card__badge {
       position: absolute;
@@ -239,7 +248,8 @@ interface Room {
       flex: 1;
     }
     .room-card__title {
-      font-size: var(--text-xl);
+      font-size: clamp(1.25rem, 2vw, 1.45rem);
+      letter-spacing: -0.015em;
       margin-bottom: var(--space-sm);
     }
     .room-card__desc {
@@ -297,6 +307,10 @@ interface Room {
     .room-card__cta:hover {
       background: var(--color-terracotta);
       color: var(--color-white);
+    }
+    .room-card__cta:focus-visible {
+      outline-color: var(--color-mediterranean);
+      outline-offset: 3px;
     }
 
     .site-footer {

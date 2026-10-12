@@ -11,17 +11,18 @@ import { Subscription } from 'rxjs';
   imports: [CommonModule, FormsModule, RouterLink],
   template: `
     <div class="reserve-page">
-      <div class="container py-5" style="margin-top: 70px;">
+      <div class="container reserve-layout">
         <div class="row justify-content-center">
-          <div class="col-lg-7">
+          <div class="col-lg-8">
 
-            <div class="card shadow border-0 rounded-4 overflow-hidden">
-              <div class="card-header py-4 text-center card-header--brand">
-                <h3 class="mb-1 fw-bold text-white">Make a Reservation</h3>
-                <p class="mb-0 text-white-50 small">Finca La Carla &middot; Antequera, M&aacute;laga</p>
+            <div class="reservation-card">
+              <div class="reservation-header">
+                <span class="reservation-eyebrow">Estancias &middot; Reservations</span>
+                <h1 class="reservation-title">Plan your stay</h1>
+                <p class="reservation-intro">Choose a room and dates to see your total.</p>
               </div>
 
-              <div class="card-body p-4">
+              <div class="reservation-body">
 
                 @if (successMessage(); as msg) {
                   <div class="alert alert-success alert-dismissible fade show" role="alert" aria-live="polite">
@@ -38,25 +39,25 @@ import { Subscription } from 'rxjs';
                 }
 
                 <form (ngSubmit)="onSubmit()" #reservationForm="ngForm">
-                  <div class="mb-3">
-                    <label for="customerName" class="form-label fw-semibold">Full Name</label>
-                    <input type="text" class="form-control form-control-lg" id="customerName"
+                  <div class="form-group">
+                    <label for="customerName" class="form-label">Full name</label>
+                    <input type="text" class="form-control" id="customerName"
                            [(ngModel)]="customerName" name="customerName"
                            placeholder="e.g. Carlos Garc&iacute;a" required
                            autocomplete="name">
                   </div>
 
-                  <div class="mb-3">
-                    <label for="customerEmail" class="form-label fw-semibold">Email</label>
-                    <input type="email" class="form-control form-control-lg" id="customerEmail"
+                  <div class="form-group">
+                    <label for="customerEmail" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="customerEmail"
                            [(ngModel)]="customerEmail" name="customerEmail"
                            placeholder="e.g. carlos@email.com" required
                            autocomplete="email">
                   </div>
 
-                  <div class="mb-3">
-                    <label class="form-label fw-semibold">Room Type</label>
-                    <div class="room-picker">
+                  <div class="form-group">
+                    <span class="form-label" id="room-type-label">Room type</span>
+                    <div class="room-picker" role="group" aria-labelledby="room-type-label">
                       @for (option of roomOptions; track option.id) {
                         <button type="button"
                                 class="room-option"
@@ -75,16 +76,16 @@ import { Subscription } from 'rxjs';
                     <input type="hidden" [(ngModel)]="roomType" name="roomType" required>
                   </div>
 
-                  <div class="row">
-                    <div class="col-md-6 mb-3">
-                      <label for="checkInDate" class="form-label fw-semibold">Check-in</label>
-                      <input type="date" class="form-control form-control-lg" id="checkInDate"
+                  <div class="row date-fields">
+                    <div class="col-md-6 form-group">
+                      <label for="checkInDate" class="form-label">Check-in</label>
+                      <input type="date" class="form-control" id="checkInDate"
                              [(ngModel)]="checkInDate" name="checkInDate"
                              [min]="today" required>
                     </div>
-                    <div class="col-md-6 mb-3">
-                      <label for="checkOutDate" class="form-label fw-semibold">Check-out</label>
-                      <input type="date" class="form-control form-control-lg" id="checkOutDate"
+                    <div class="col-md-6 form-group">
+                      <label for="checkOutDate" class="form-label">Check-out</label>
+                      <input type="date" class="form-control" id="checkOutDate"
                              [(ngModel)]="checkOutDate" name="checkOutDate"
                              [min]="minCheckOutDate()"
                              [attr.aria-describedby]="invalidDateRange() ? 'checkOutDateError' : null"
@@ -111,13 +112,13 @@ import { Subscription } from 'rxjs';
                     </div>
                   }
 
-                  <button type="submit" class="btn btn-lg w-100 fw-bold py-3 mt-3 btn-submit"
+                  <button type="submit" class="btn w-100 btn-submit"
                           [disabled]="loading() || !reservationForm.valid">
                     @if (loading()) {
                       <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                       <span>Processing...</span>
                     } @else {
-                      <span>Confirm Reservation</span>
+                      <span>Confirm reservation</span>
                     }
                   </button>
                 </form>
@@ -136,41 +137,101 @@ import { Subscription } from 'rxjs';
     .reserve-page {
       min-height: 100vh;
       background: var(--color-whitewash);
+      padding: 7.25rem 0 4rem;
     }
-    .card {
-      border-radius: 16px !important;
+    .reserve-layout {
+      max-width: 920px;
     }
-    .card-header--brand {
-      background: var(--color-mediterranean) !important;
+    .reservation-card {
+      overflow: hidden;
+      background: var(--color-white);
+      border: 1px solid rgba(44, 24, 16, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 16px 48px rgba(44, 24, 16, 0.08);
     }
-    .form-control:focus, .form-select:focus {
-      border-color: var(--color-sun);
-      box-shadow: 0 0 0 0.2rem rgba(232, 184, 75, 0.25);
+    .reservation-header {
+      padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 5vw, 3rem);
+      background: var(--color-mediterranean);
+      color: var(--color-white);
+    }
+    .reservation-eyebrow {
+      display: block;
+      margin-bottom: var(--space-sm);
+      color: var(--color-sun);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .reservation-title {
+      margin: 0;
+      color: var(--color-white);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      letter-spacing: -0.025em;
+    }
+    .reservation-intro {
+      margin: var(--space-sm) 0 0;
+      color: rgba(255,255,255,0.75);
+      font-size: var(--text-sm);
+    }
+    .reservation-body {
+      padding: clamp(1.5rem, 5vw, 3rem);
+    }
+    .form-group {
+      min-width: 0;
+      margin-bottom: var(--space-lg);
+    }
+    .form-label {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: var(--color-dark-oak);
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+    .form-control {
+      min-height: 3.15rem;
+      border-color: var(--color-stone);
+      border-radius: var(--radius-sm);
+      color: var(--color-dark-oak);
+      font-size: var(--text-base);
+    }
+    .form-control:focus {
+      border-color: var(--color-mediterranean-light);
+      box-shadow: 0 0 0 0.2rem rgba(44, 83, 128, 0.15);
+    }
+    .date-fields {
+      --bs-gutter-x: 1rem;
+      margin-bottom: 0.25rem;
     }
     .date-error {
-      color: #b02a37;
+      color: #a34436;
       font-size: var(--text-sm);
       margin-top: var(--space-xs);
     }
+    .form-control[aria-invalid="true"] {
+      border-color: #a34436;
+    }
     .price-summary {
-      background: var(--color-cream);
-      border-radius: var(--radius-md);
       padding: var(--space-md) var(--space-lg);
-      margin-top: var(--space-md);
+      margin: 0 0 var(--space-lg);
+      border: 1px solid var(--color-stone);
+      border-left: 3px solid var(--color-olive);
+      border-radius: var(--radius-sm);
+      background: var(--color-whitewash);
     }
     .price-summary__row {
       display: flex;
       justify-content: space-between;
       font-size: var(--text-sm);
       color: var(--color-warm-gray);
-      margin-bottom: var(--space-sm);
+      margin-bottom: var(--space-md);
     }
     .price-summary__total {
       display: flex;
       justify-content: space-between;
       font-weight: 600;
       font-size: var(--text-lg);
-      padding-top: var(--space-sm);
+      padding-top: var(--space-md);
       border-top: 1px solid var(--color-stone);
       color: var(--color-dark-oak);
     }
@@ -181,33 +242,38 @@ import { Subscription } from 'rxjs';
       color: var(--color-mediterranean);
     }
     .btn-submit {
+      min-height: 3.5rem;
       background: var(--color-sun);
       color: var(--color-dark-oak);
       border: none;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      transition: background 0.2s, transform 0.2s;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-base);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.2s, opacity 0.2s;
     }
     .btn-submit:hover:not(:disabled) {
       background: var(--color-sun-dark);
       transform: translateY(-1px);
     }
     .btn-submit:disabled {
-      opacity: 0.6;
+      opacity: 0.72;
       cursor: not-allowed;
     }
     .back-link {
       color: var(--color-warm-gray);
       text-decoration: none;
       font-size: var(--text-sm);
+      text-underline-offset: 3px;
     }
     .back-link:hover {
       color: var(--color-dark-oak);
       text-decoration: underline;
     }
     .room-picker {
-      display: flex;
-      gap: var(--space-md);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
     }
     .room-option {
       flex: 1;
@@ -218,17 +284,18 @@ import { Subscription } from 'rxjs';
       background: var(--color-white);
       padding: 0;
       text-align: left;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
     }
     .room-option:hover {
       border-color: var(--color-warm-gray);
+      transform: translateY(-2px);
     }
     .room-option--active {
-      border-color: var(--color-mediterranean);
-      box-shadow: 0 0 0 3px rgba(44, 83, 128, 0.2);
+      border-color: var(--color-olive);
+      box-shadow: 0 0 0 2px rgba(122, 139, 91, 0.2);
     }
     .room-option__image {
-      height: 100px;
+      height: clamp(5.5rem, 13vw, 7.5rem);
       background-size: cover;
       background-position: center;
       background-color: var(--color-stone);
@@ -247,6 +314,28 @@ import { Subscription } from 'rxjs';
     .room-option__price {
       font-size: var(--text-xs);
       color: var(--color-warm-gray);
+    }
+    @media (max-width: 575.98px) {
+      .reserve-page {
+        padding: 6.25rem 0 2rem;
+      }
+      .room-picker {
+        gap: 0.5rem;
+      }
+      .room-option__info {
+        padding: 0.6rem;
+      }
+      .room-option__name {
+        font-size: var(--text-xs);
+      }
+      .room-option__price {
+        font-size: 0.7rem;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .room-option:hover {
+        transform: none;
+      }
     }
   `]
 })

@@ -49,6 +49,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -98,7 +99,9 @@ h1, h2, h3, h4, h5 {
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  padding: var(--space-lg) 0;
+  max-width: 12rem;
+  margin: 0 auto;
+  padding: var(--space-md) 0 var(--space-lg);
 }
 .andalusian-divider::before,
 .andalusian-divider::after {
@@ -127,7 +130,7 @@ img {
 }
 
 .section {
-  padding: var(--space-4xl) 0;
+  padding: clamp(3.5rem, 8vw, var(--space-4xl)) 0;
 }
 .section--cream {
   background: var(--color-cream);
@@ -141,7 +144,8 @@ img {
   margin-bottom: var(--space-sm);
 }
 .section-title {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(1.85rem, 4vw, 2.65rem);
+  letter-spacing: -0.025em;
   margin-bottom: var(--space-xs);
 }
 .section-text {
@@ -170,4 +174,50 @@ img {
   overflow: hidden;
   clip: rect(0,0,0,0);
   border: 0;
+}
+
+@media (max-width: 575.98px) {
+  .hero {
+    min-height: min(88vh, 48rem);
+    min-height: min(88svh, 48rem);
+  }
+
+  .hero-cta {
+    padding: 0.9rem 2rem;
+  }
+
+  .rooms-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .room-card__image {
+    height: 15rem;
+  }
+
+  .room-card__body {
+    padding: var(--space-lg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .room-card__photo,
+  .room-option:hover,
+  .room-card:hover {
+    transform: none;
+    transition: none;
+  }
 }

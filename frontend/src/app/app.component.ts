@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -13,19 +13,20 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
         <a class="navbar-brand" routerLink="/" aria-label="Finca La Carla home">
           Finca La Carla
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" aria-controls="navbarNav"
+                [attr.aria-expanded]="navigationExpanded()" aria-label="Toggle navigation"
+                (click)="toggleNavigation()">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" [class.show]="navigationExpanded()" id="navbarNav">
           <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
               <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-                 ariaCurrentWhenActive="page">Home</a>
+                 ariaCurrentWhenActive="page" (click)="navigationExpanded.set(false)">Home</a>
             </li>
             <li class="nav-item ms-lg-2">
               <a class="btn nav-cta" routerLink="/reserve" routerLinkActive="active"
-                 ariaCurrentWhenActive="page">Book Your Stay</a>
+                 ariaCurrentWhenActive="page" (click)="navigationExpanded.set(false)">Book Your Stay</a>
             </li>
           </ul>
         </div>
@@ -65,6 +66,12 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
     .nav-link:hover, .nav-link.active {
       color: var(--color-sun) !important;
     }
+    .navbar-toggler {
+      border-color: rgba(255,255,255,0.2);
+    }
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 0.2rem rgba(232,184,75,0.35);
+    }
     .nav-cta {
       background: var(--color-sun);
       color: var(--color-dark-oak) !important;
@@ -82,6 +89,26 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
       transform: translateY(-1px);
       color: var(--color-dark-oak) !important;
     }
+    @media (max-width: 991.98px) {
+      .navbar-collapse {
+        padding-top: var(--space-sm);
+      }
+      .navbar-nav {
+        align-items: stretch !important;
+        gap: var(--space-xs);
+      }
+      .nav-cta {
+        display: block;
+        margin-top: var(--space-xs);
+        text-align: center;
+      }
+    }
   `]
 })
-export class AppComponent {}
+export class AppComponent {
+  readonly navigationExpanded = signal(false);
+
+  toggleNavigation() {
+    this.navigationExpanded.update(isExpanded => !isExpanded);
+  }
+}
