@@ -86,7 +86,15 @@ import { Subscription } from 'rxjs';
                       <label for="checkOutDate" class="form-label fw-semibold">Check-out</label>
                       <input type="date" class="form-control form-control-lg" id="checkOutDate"
                              [(ngModel)]="checkOutDate" name="checkOutDate"
-                             [min]="minCheckOutDate()" required>
+                             [min]="minCheckOutDate()"
+                             [attr.aria-describedby]="invalidDateRange() ? 'checkOutDateError' : null"
+                             [attr.aria-invalid]="invalidDateRange()"
+                             required>
+                      @if (invalidDateRange()) {
+                        <div id="checkOutDateError" class="date-error" role="alert">
+                          Check-out must be at least one day after check-in.
+                        </div>
+                      }
                     </div>
                   </div>
 
@@ -138,6 +146,11 @@ import { Subscription } from 'rxjs';
     .form-control:focus, .form-select:focus {
       border-color: var(--color-sun);
       box-shadow: 0 0 0 0.2rem rgba(232, 184, 75, 0.25);
+    }
+    .date-error {
+      color: #b02a37;
+      font-size: var(--text-sm);
+      margin-top: var(--space-xs);
     }
     .price-summary {
       background: var(--color-cream);
@@ -279,7 +292,17 @@ export class ReserveComponent implements OnInit, OnDestroy {
   readonly calculatedPrice = computed(() => this.totalNights() * this.pricePerNight());
 
   readonly minCheckOutDate = computed(() => {
-    return this.checkInDate() || this.today;
+    const checkIn = this.checkInDate();
+    if (!checkIn) return this.today;
+
+    const [year, month, day] = checkIn.split('-').map(Number);
+    return new Date(Date.UTC(year, month - 1, day + 1)).toISOString().slice(0, 10);
+  });
+
+  readonly invalidDateRange = computed(() => {
+    const checkIn = this.checkInDate();
+    const checkOut = this.checkOutDate();
+    return Boolean(checkIn && checkOut && checkOut <= checkIn);
   });
 
   readonly roomLabel = computed(() => {
@@ -304,6 +327,8 @@ export class ReserveComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    if (this.invalidDateRange()) return;
+
     this.loading.set(true);
     this.successMessage.set('');
     this.errorMessage.set('');

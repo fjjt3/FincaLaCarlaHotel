@@ -14,7 +14,7 @@ public record Reservation(
         if (checkInDate == null || checkOutDate == null) {
             throw new IllegalArgumentException("Check-in and check-out dates are required");
         }
-        if (checkOutDate.before(checkInDate)) {
+        if (!checkOutDate.after(checkInDate)) {
             throw new IllegalArgumentException("Check-out date must be after check-in date");
         }
     }

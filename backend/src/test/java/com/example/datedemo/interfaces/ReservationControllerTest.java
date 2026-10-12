@@ -46,6 +46,25 @@ class ReservationControllerTest {
     }
 
     @Test
+    void createReservation_shouldReturn400_whenCheckOutMatchesCheckIn() throws Exception {
+        String json = """
+                {
+                    "customerName": "Same Day Test",
+                    "customerEmail": "same-day@email.com",
+                    "roomType": "SINGLE",
+                    "checkInDate": "2027-08-01",
+                    "checkOutDate": "2027-08-01"
+                }
+                """;
+
+        mockMvc.perform(post("/api/reservations")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("Check-out date must be after check-in date"));
+    }
+
+    @Test
     void getAllReservations_shouldReturnList() throws Exception {
         mockMvc.perform(get("/api/reservations"))
                 .andExpect(status().isOk())
